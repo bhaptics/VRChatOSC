@@ -13,10 +13,9 @@ Please read **[How to play VRChat with bHaptics](https://bhaptics.notion.site/Ho
 ---
 
 ### License
-bHaptics VRChatOSC is licensed under the GPL-3.0 License. See [LICENSE](https://github.com/bhaptics/VRChatOSC/blob/main/LICENSE.md) for the full License.
-
-- This project is based on [bHapticsOSC](https://github.com/HerpDerpinstine/bHapticsOSC).
-  - [bHapticsOSC](https://github.com/HerpDerpinstine/bHapticsOSC) is licensed under the GPL-3.0 License. See [LICENSE](https://github.com/HerpDerpinstine/bHapticsOSC/blob/master/LICENSE.md) for the full License.
+bHaptics VRChatOSC is licensed under the GPL-3.0 License. 
+- This project is based on bHapticsOSC
+  - bHapticsOSC is licensed under the GPL-3.0 License.
 - Third-party Libraries used as Source Code and/or bundled in Binary Form:
   - [Animator As Code](https://github.com/hai-vr/av3-animator-as-code) is licensed under the MIT License. See [LICENSE](https://github.com/hai-vr/av3-animator-as-code/blob/main/LICENSE) for the full License.
 
