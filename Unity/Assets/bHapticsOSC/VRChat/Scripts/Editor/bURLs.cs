@@ -9,7 +9,7 @@ namespace bHapticsOSC.VRChat
     {
         [MenuItem("bHapticsOSC/Avatar How-to Guide")]
         private static void OpenGuide()
-            => Application.OpenURL("https://bhaptics.notion.site/How-to-Upload-an-Avatar-with-bHaptics-Devices-PC-c0479c68b8984b9d9048423b8c44f503");
+            => Application.OpenURL("https://bhaptics.notion.site/How-to-play-VRChat-with-bHaptics-1226d5724b8b80229ab9e0001ab70b61");
 
         [MenuItem("bHapticsOSC/GitHub Repository")]
         private static void OpenRepository()
