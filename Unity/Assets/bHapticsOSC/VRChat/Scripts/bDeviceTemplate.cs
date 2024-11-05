@@ -13,6 +13,8 @@ namespace bHapticsOSC.VRChat
 
         public GameObject Prefab;
         public GameObject PrefabMesh;
+        public GameObject PrefabMobile;
+        public GameObject PrefabMeshMobile;
 
         public bool HasParentConstraints;
     }

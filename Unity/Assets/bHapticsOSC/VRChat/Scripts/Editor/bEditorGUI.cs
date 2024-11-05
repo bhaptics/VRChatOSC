@@ -1,4 +1,5 @@
 ﻿#if UNITY_EDITOR && VRC_SDK_VRCSDK3 && bHapticsOSC_HasAac
+using System;
 using System.Linq;
 using UnityEngine;
 using System.Collections.Generic;
@@ -42,7 +43,22 @@ namespace bHapticsOSC.VRChat
 
 					bUserSettings newSettings = CreateInstance<bUserSettings>();
 					newSettings.Bone = template.Bone;
-					newSettings.OnShowMeshChange = (bUserSettings thisSettings) => thisSettings.SwapPrefabs(editorComp.avatarAnimator, thisSettings.ShowMesh ? template.PrefabMesh : template.Prefab);
+
+					var getNewPrefab = new Func<bUserSettings, GameObject>(x =>
+					{
+						if (x.ShowMesh)
+						{
+							return x.IsMobile ? template.PrefabMeshMobile : template.PrefabMesh;
+						}
+						else
+						{
+							return x.IsMobile ? template.PrefabMobile : template.Prefab;
+						}
+					});
+					
+					
+					newSettings.OnShowMeshChange = thisSettings => thisSettings.SwapPrefabs(editorComp.avatarAnimator, getNewPrefab(thisSettings));
+					newSettings.OnIsMobileChange = thisSettings => thisSettings.SwapPrefabs(editorComp.avatarAnimator, getNewPrefab(thisSettings));
 					editorComp.AllUserSettings[template] = newSettings;
 				}
 			}
@@ -103,8 +119,22 @@ namespace bHapticsOSC.VRChat
 				{
 					if (userSettings.CurrentPrefab == null)
 					{
-						if (bGUI.DrawButton("+ ADD DEVICE"))
+						GUILayout.BeginHorizontal();
+						if (bGUI.DrawButton("+ ADD DEVICE (PC)"))
+						{
 							userSettings.Reset();
+							userSettings.IsMobile = false;
+						}
+
+						if (CurrentTemplate.PrefabMeshMobile)
+						{
+							if (bGUI.DrawButton("+ ADD DEVICE (Quest)"))
+							{
+								userSettings.Reset();
+								userSettings.IsMobile = true;
+							}
+						}
+						GUILayout.EndHorizontal();
 						return;
 					}
 
