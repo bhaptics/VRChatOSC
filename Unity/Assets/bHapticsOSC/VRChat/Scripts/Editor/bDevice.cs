@@ -37,11 +37,27 @@ namespace bHapticsOSC.VRChat
 
                 string withoutMeshStr = $"Assets/bHapticsOSC/VRChat/Prefabs/Without Mesh/{nameWithoutSpaces}.prefab";
                 if (File.Exists(withoutMeshStr))
+                {
                     settings.Prefab = (GameObject)EditorGUIUtility.Load(withoutMeshStr);
+                }
 
                 string withMeshStr = $"Assets/bHapticsOSC/VRChat/Prefabs/With Mesh/{nameWithoutSpaces}.prefab";
                 if (File.Exists(withMeshStr))
+                {
                     settings.PrefabMesh = (GameObject)EditorGUIUtility.Load(withMeshStr);
+                }
+
+                string withoutMeshMobileStr = $"Assets/bHapticsOSC/VRChat/Prefabs/Mobile Without Mesh/{nameWithoutSpaces}.prefab";
+                if (File.Exists(withoutMeshMobileStr))
+                {
+                    settings.PrefabMobile = (GameObject)EditorGUIUtility.Load(withoutMeshMobileStr);
+                }
+
+                string withMeshMobileStr = $"Assets/bHapticsOSC/VRChat/Prefabs/Mobile With Mesh/{nameWithoutSpaces}.prefab";
+                if (File.Exists(withMeshMobileStr))
+                {
+                    settings.PrefabMeshMobile = (GameObject)EditorGUIUtility.Load(withMeshMobileStr);
+                }
             }
         }
 
@@ -60,7 +76,7 @@ namespace bHapticsOSC.VRChat
                     return index + (node * 0.1f);
                 default:
                     return index;
-            };
+            }
         }
     }
 }

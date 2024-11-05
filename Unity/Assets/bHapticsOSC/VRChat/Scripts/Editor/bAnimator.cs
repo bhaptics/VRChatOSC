@@ -11,52 +11,81 @@ namespace bHapticsOSC.VRChat
         {
             AacFlBase aac = editorComp.CreateAnimatorAsCode();
 
-            foreach (KeyValuePair<bDeviceType, bDeviceTemplate> keyValuePair in bDevice.AllTemplates)
+            foreach (KeyValuePair<bDeviceType, bDeviceTemplate> pair in bDevice.AllTemplates)
             {
-                if (keyValuePair.Value.NodeCount <= 0)
+                if (pair.Value.NodeCount <= 0)
                     continue;
 
                 bUserSettings userSettings = null;
-                if ((keyValuePair.Key == bDeviceType.VEST_FRONT) || (keyValuePair.Key == bDeviceType.VEST_BACK))
-                    userSettings = editorComp.AllUserSettings[bDevice.AllTemplates[bDeviceType.VEST]];
-                else
-                    userSettings = editorComp.AllUserSettings[keyValuePair.Value];
-                if (userSettings.CurrentPrefab == null)
-                    continue;
-
-                for (int node = 1; node < keyValuePair.Value.NodeCount + 1; node++)
+                if (pair.Key is bDeviceType.VEST_FRONT or bDeviceType.VEST_BACK)
                 {
-                    string nodeName = $"{bHapticsOSCIntegration.SystemName}_{keyValuePair.Value.Name.Replace(' ', '_')}_{node}";
-                    CreateAnimatorLayerStates(node, nodeName, userSettings.TouchView_Default, userSettings.TouchView_Triggered, aac, editorComp, keyValuePair);
+                    userSettings = editorComp.AllUserSettings[bDevice.AllTemplates[bDeviceType.VEST]];
+                }
+                else
+                {
+                    userSettings = editorComp.AllUserSettings[pair.Value];
+                }
+                
+                if (userSettings.CurrentPrefab == null)
+                {
+                    continue;
+                }
+
+                for (int node = 1; node < pair.Value.NodeCount + 1; node++)
+                {
+                    string nodeName = $"{bHapticsOSCIntegration.SystemName}/{pair.Value.Name.Replace(" ", "")}/{node}";
+                    CreateAnimatorLayerStates(node, nodeName, userSettings.TouchView_Default, userSettings.TouchView_Triggered, aac, editorComp, pair);
                 }
             }
         }
 
         private static void CreateAnimatorLayerStates(int node, string nodeName, Color defaultCol, Color triggeredCol, AacFlBase aac, bHapticsOSCIntegration editorComp, KeyValuePair<bDeviceType, bDeviceTemplate> keyValuePair)
         {
-            string layer_name = $"{keyValuePair.Value.Name.Replace(' ', '_')}_{node}";
+            string layerName = $"{keyValuePair.Value.Name.Replace(" ", "/")}/{node}";
 
-            try { aac.RemoveAllSupportingLayers(layer_name); } catch { }
+            try
+            {
+                aac.RemoveAllSupportingLayers(layerName);
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError(e.Message);
+            }
+            
             AacFlLayer layer = aac.CreateSupportingFxLayer("ParameterCreation");
-            AacFlBoolParameter boolParam = layer.BoolParameter(ConvertParameterAsBhaptics(nodeName));
+            
+            string parameter = ConvertParameterAsBhaptics(nodeName);
+            AacFlBoolParameterGroup boolParams = layer.BoolParameters($"{parameter}/self", $"{parameter}/others");
+
             AacFlState exitState = layer.NewState("dummy");
             exitState.Exits();
             layer.EntryTransitionsTo(exitState);
-            try { aac.RemoveAllSupportingLayers("ParameterCreation"); } catch { }
+            
+            try
+            {
+                aac.RemoveAllSupportingLayers("ParameterCreation");
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError(e.Message);
+            }
 
             float shaderDeviceIndex = bDevice.GetShaderIndex(keyValuePair.Key, node);
             Renderer[] renderers = bShader.FindRenderersFromIndex(shaderDeviceIndex, editorComp.avatar.gameObject);
-            if (renderers.Length <= 0)
-                return;
 
-            layer = aac.CreateSupportingFxLayer(layer_name);
+            if (renderers.Length <= 0)
+            {
+                return;
+            }
+
+            layer = aac.CreateSupportingFxLayer(layerName);
 
             AacFlState falseState = layer.NewState("False").WithWriteDefaultsSetTo(true);
-            falseState.TransitionsFromEntry().When(boolParam.IsFalse());
+            falseState.TransitionsFromEntry().When(boolParams.AreFalse());
             falseState.Exits().AfterAnimationFinishes();
 
             AacFlState trueState = layer.NewState("True", 1, 0).WithWriteDefaultsSetTo(true);
-            trueState.TransitionsFromEntry().When(boolParam.IsTrue());
+            trueState.TransitionsFromEntry().When(boolParams.IsAnyTrue());
             trueState.Exits().AfterAnimationFinishes();
 
             foreach (Renderer renderer in renderers)
@@ -73,7 +102,7 @@ namespace bHapticsOSC.VRChat
 
         private static string ConvertParameterAsBhaptics(string parameter)
         {
-            parameter = parameter.Replace(bHapticsOSCIntegration.SystemName, "bOSC_v1");
+            parameter = parameter.Replace(bHapticsOSCIntegration.SystemName, "bOSC/v2");
             if (parameter.Contains("Vest_Front"))
             {
                 parameter = parameter.Replace("Vest_Front", "VestFront");
@@ -107,10 +136,10 @@ namespace bHapticsOSC.VRChat
                 parameter = parameter.Replace("Hand_Right", "HandR");
             }
 
-            var tempCharArr = parameter.Split('_');
-            if (int.TryParse(tempCharArr[tempCharArr.Length - 1], out int res))
+            string[] tempCharArr = parameter.Split('/');
+            if (int.TryParse(tempCharArr[^1], out int res))
             {
-                parameter = parameter.Replace("_" + res, "_" + (res - 1));
+                parameter = parameter.Replace("/" + res, "/" + (res - 1));
             }
 
             return parameter;

@@ -8,25 +8,21 @@ namespace bHapticsOSC.VRChat
     [System.Serializable]
     public class bUserSettings : ScriptableObject
     {
-        [SerializeField]
-        public HumanBodyBones Bone;
-        [SerializeField]
-        public bool ApplyParentConstraints = true;
-        [SerializeField]
-        public GameObject CurrentPrefab;
-        [SerializeField]
-        public List<string> CustomContactTags = new List<string>();
+        [SerializeField] public HumanBodyBones Bone;
+        [SerializeField] public bool ApplyParentConstraints = true;
+        [SerializeField] public GameObject CurrentPrefab;
+        [SerializeField] public List<string> CustomContactTags = new List<string>();
 
-        [SerializeField]
-        public Color TouchView_Default = new Color(0, 0, 0, 0);
+        [SerializeField] public Color TouchView_Default = new Color(0, 0, 0, 0);
         private Color touchView_Default = new Color(0, 0, 0, 0);
-        [SerializeField]
-        public Color TouchView_Triggered = new Color(0, 1, 1, 0.5f);
+        [SerializeField] public Color TouchView_Triggered = new Color(0, 1, 1, 0.5f);
         private Color touchView_Triggered = new Color(0, 1, 1, 0.5f);
 
-        [SerializeField]
-        private bool _showMesh = true;
+        [SerializeField] private bool _showMesh = true;
+        [SerializeField] private bool _isMobile = false;
         public System.Action<bUserSettings> OnShowMeshChange;
+        public System.Action<bUserSettings> OnIsMobileChange;
+
         public bool ShowMesh
         {
             get => _showMesh;
@@ -36,6 +32,21 @@ namespace bHapticsOSC.VRChat
                     return;
                 _showMesh = value;
                 OnShowMeshChange?.Invoke(this);
+            }
+        }
+
+        public bool IsMobile
+        {
+            get => _isMobile;
+            set
+            {
+                if (_isMobile == value)
+                {
+                    return;
+                }
+
+                _isMobile = value;
+                OnIsMobileChange?.Invoke(this);
             }
         }
 
