@@ -88,14 +88,16 @@ namespace bHapticsOSC.VRChat
             trueState.TransitionsFromEntry().When(boolParams.IsAnyTrue());
             trueState.Exits().AfterAnimationFinishes();
 
+            int shaderNode = keyValuePair.Key == bDeviceType.VEST_BACK ? (node - 1) / 4 * 8 - node + 5 : node;
+
             foreach (Renderer renderer in renderers)
             {
                 //bShader.SetTouchViewColors(renderer, defaultCol, triggeredCol);
 
-                AacFlClip falseClip = aac.NewClip().Animating(clip => clip.Animates(renderer, $"material._Node{node}").WithOneFrame(0f));
+                AacFlClip falseClip = aac.NewClip().Animating(clip => clip.Animates(renderer, $"material._Node{shaderNode}").WithOneFrame(0f));
                 falseState = falseState.WithAnimation(falseClip);
 
-                AacFlClip trueClip = aac.NewClip().Animating(clip => clip.Animates(renderer, $"material._Node{node}").WithOneFrame(1f));
+                AacFlClip trueClip = aac.NewClip().Animating(clip => clip.Animates(renderer, $"material._Node{shaderNode}").WithOneFrame(1f));
                 trueState = trueState.WithAnimation(trueClip);
             }
         }
