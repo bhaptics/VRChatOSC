@@ -31,7 +31,7 @@ namespace bHapticsOSC.VRChat
                     continue;
                 }
 
-                for (int node = 1; node < pair.Value.NodeCount + 1; node++)
+                for (int node = 0; node < pair.Value.NodeCount; node++)
                 {
                     string nodeName = $"{bHapticsOSCIntegration.SystemName}/{pair.Value.Name.Replace(" ", "")}/{node}";
                     CreateAnimatorLayerStates(node, nodeName, userSettings.TouchView_Default, userSettings.TouchView_Triggered, aac, editorComp, pair);
@@ -88,7 +88,7 @@ namespace bHapticsOSC.VRChat
             trueState.TransitionsFromEntry().When(boolParams.IsAnyTrue());
             trueState.Exits().AfterAnimationFinishes();
 
-            int shaderNode = keyValuePair.Key == bDeviceType.VEST_BACK ? (node - 1) / 4 * 8 - node + 5 : node;
+            int shaderNode = keyValuePair.Key == bDeviceType.VEST_BACK ? node / 4 * 8 - node + 4 : node + 1;
 
             foreach (Renderer renderer in renderers)
             {
@@ -105,43 +105,29 @@ namespace bHapticsOSC.VRChat
         private static string ConvertParameterAsBhaptics(string parameter)
         {
             parameter = parameter.Replace(bHapticsOSCIntegration.SystemName, "bOSC/v2");
-            if (parameter.Contains("Vest_Front"))
+            if (parameter.Contains("ArmLeft"))
             {
-                parameter = parameter.Replace("Vest_Front", "VestFront");
+                parameter = parameter.Replace("ArmLeft", "ForearmL");
             }
-            else if (parameter.Contains("Vest_Back"))
+            else if (parameter.Contains("ArmRight"))
             {
-                parameter = parameter.Replace("Vest_Back", "VestBack");
+                parameter = parameter.Replace("ArmRight", "ForearmR");
             }
-            else if (parameter.Contains("Arm_Left"))
+            else if (parameter.Contains("FootLeft"))
             {
-                parameter = parameter.Replace("Arm_Left", "ForearmL");
+                parameter = parameter.Replace("FootLeft", "FootL");
             }
-            else if (parameter.Contains("Arm_Right"))
+            else if (parameter.Contains("FootRight"))
             {
-                parameter = parameter.Replace("Arm_Right", "ForearmR");
+                parameter = parameter.Replace("FootRight", "FootR");
             }
-            else if (parameter.Contains("Foot_Left"))
+            else if (parameter.Contains("HandLeft"))
             {
-                parameter = parameter.Replace("Foot_Left", "FootL");
+                parameter = parameter.Replace("HandLeft", "HandL");
             }
-            else if (parameter.Contains("Foot_Right"))
+            else if (parameter.Contains("HandRight"))
             {
-                parameter = parameter.Replace("Foot_Right", "FootR");
-            }
-            else if (parameter.Contains("Hand_Left"))
-            {
-                parameter = parameter.Replace("Hand_Left", "HandL");
-            }
-            else if (parameter.Contains("Hand_Right"))
-            {
-                parameter = parameter.Replace("Hand_Right", "HandR");
-            }
-
-            string[] tempCharArr = parameter.Split('/');
-            if (int.TryParse(tempCharArr[^1], out int res))
-            {
-                parameter = parameter.Replace("/" + res, "/" + (res - 1));
+                parameter = parameter.Replace("HandRight", "HandR");
             }
 
             return parameter;

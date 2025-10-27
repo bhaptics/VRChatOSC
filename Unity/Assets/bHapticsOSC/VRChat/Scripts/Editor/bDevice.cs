@@ -28,6 +28,7 @@ namespace bHapticsOSC.VRChat
 
             // Gloves
 
+            // TODO - ShaderIndex will be fixed to 6f, 7f after the visualizer's UV fixed. Before that, just keep it as is.
             AllTemplates[bDeviceType.FOOT_LEFT] = new bDeviceTemplate { Name = "Foot Left", HasBone = true, Bone = HumanBodyBones.LeftFoot, NodeCount = 3, ShaderIndex = 8f };
             AllTemplates[bDeviceType.FOOT_RIGHT] = new bDeviceTemplate { Name = "Foot Right", HasBone = true, Bone = HumanBodyBones.RightFoot, NodeCount = 3, ShaderIndex = 9f };
 
@@ -63,17 +64,14 @@ namespace bHapticsOSC.VRChat
 
         public static float GetShaderIndex(this bDeviceType type, int node = 1)
         {
-            if (node < 1)
-                node = 1;
-            if (node > 3)
-                node = 3;
-            float index = bDevice.AllTemplates[type].ShaderIndex;
+            float index = AllTemplates[type].ShaderIndex;
+
             switch (type)
             {
                 case bDeviceType.HAND_RIGHT:
-                    return index + (node * 0.1f);
+                    return index + ((node + 1) * 0.1f);
                 case bDeviceType.HAND_LEFT:
-                    return index + (node * 0.1f);
+                    return index + ((node + 1) * 0.1f);
                 default:
                     return index;
             }

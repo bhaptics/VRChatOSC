@@ -102,7 +102,7 @@ namespace bHapticsOSC.VRChat
         {
             Debug.LogError("bHapticsOSC requires Animator as Code!");
             EditorUtility.DisplayDialog("bHapticsOSC", "bHapticsOSC requires Animator as Code!\nPlease import it.", "OK");
-            Application.OpenURL("https://github.com/HerpDerpinstine/bHapticsOSC/wiki/VRChat:-Custom-Avatar-Integration-~-Importing-Animator-As-Code");
+            Application.OpenURL("https://bhaptics.notion.site/How-to-play-VRChat-with-bHaptics-1226d5724b8b80229ab9e0001ab70b61");
         }
 
         private static bool HasAac()
