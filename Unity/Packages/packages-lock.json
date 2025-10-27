@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "com.unity.ai.navigation": {
-      "version": "1.1.5",
+      "version": "1.1.7",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -45,7 +45,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.ide.rider": {
-      "version": "3.0.34",
+      "version": "3.0.38",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -54,19 +54,12 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.ide.visualstudio": {
-      "version": "2.0.22",
+      "version": "2.0.25",
       "depth": 0,
       "source": "registry",
       "dependencies": {
-        "com.unity.test-framework": "1.1.9"
+        "com.unity.test-framework": "1.1.31"
       },
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.ide.vscode": {
-      "version": "1.2.5",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {},
       "url": "https://packages.unity.com"
     },
     "com.unity.mathematics": {
@@ -120,7 +113,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.timeline": {
-      "version": "1.7.6",
+      "version": "1.7.7",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -189,7 +182,8 @@
         "com.unity.timeline": "1.7.6",
         "com.unity.xr.management": "4.3.3",
         "com.unity.xr.oculus": "4.0.0",
-        "com.unity.postprocessing": "3.2.2"
+        "com.unity.postprocessing": "3.2.2",
+        "com.unity.ugui": "1.0.0"
       }
     },
     "com.vrchat.core.vpm-resolver": {
