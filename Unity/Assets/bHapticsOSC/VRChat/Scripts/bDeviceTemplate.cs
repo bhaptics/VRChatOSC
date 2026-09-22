@@ -11,12 +11,14 @@ namespace bHapticsOSC.VRChat
         public HumanBodyBones Bone;
         public bool HasBone;
 
+        // Which variant a freshly added device starts on. Only a default, and only read on add - a
+        // device already in the scene has its variant taken from the prefab it instances.
+        public bool DefaultShowMesh = true;
+
         public GameObject Prefab;
         public GameObject PrefabMesh;
         public GameObject PrefabMobile;
         public GameObject PrefabMeshMobile;
-
-        public bool HasParentConstraints;
     }
 }
 #endif

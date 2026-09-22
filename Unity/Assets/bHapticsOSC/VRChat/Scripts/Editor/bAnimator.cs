@@ -34,12 +34,12 @@ namespace bHapticsOSC.VRChat
                 for (int node = 0; node < pair.Value.NodeCount; node++)
                 {
                     string nodeName = $"{bHapticsOSCIntegration.SystemName}/{pair.Value.Name.Replace(" ", "")}/{node}";
-                    CreateAnimatorLayerStates(node, nodeName, userSettings.TouchView_Default, userSettings.TouchView_Triggered, aac, editorComp, pair);
+                    CreateAnimatorLayerStates(node, nodeName, userSettings, aac, editorComp, pair);
                 }
             }
         }
 
-        private static void CreateAnimatorLayerStates(int node, string nodeName, Color defaultCol, Color triggeredCol, AacFlBase aac, bHapticsOSCIntegration editorComp, KeyValuePair<bDeviceType, bDeviceTemplate> keyValuePair)
+        private static void CreateAnimatorLayerStates(int node, string nodeName, bUserSettings userSettings, AacFlBase aac, bHapticsOSCIntegration editorComp, KeyValuePair<bDeviceType, bDeviceTemplate> keyValuePair)
         {
             string layerName = $"{keyValuePair.Value.Name.Replace(" ", "/")}/{node}";
 
@@ -54,7 +54,7 @@ namespace bHapticsOSC.VRChat
             
             AacFlLayer layer = aac.CreateSupportingFxLayer("ParameterCreation");
             
-            string parameter = ConvertParameterAsBhaptics(nodeName);
+            string parameter = ConvertParameterAsBhaptics(nodeName, userSettings.IsMobile);
             AacFlBoolParameterGroup boolParams = layer.BoolParameters($"{parameter}/self", $"{parameter}/others");
 
             AacFlState exitState = layer.NewState("dummy");
@@ -70,8 +70,10 @@ namespace bHapticsOSC.VRChat
                 Debug.LogError(e.Message);
             }
 
+            // The device's own prefab, not the whole avatar: a second copy of the device would
+            // contribute extra renderers, and an index only has to be unique within one device.
             float shaderDeviceIndex = bDevice.GetShaderIndex(keyValuePair.Key, node);
-            Renderer[] renderers = bShader.FindRenderersFromIndex(shaderDeviceIndex, editorComp.avatar.gameObject);
+            Renderer[] renderers = bShader.FindRenderersFromIndex(shaderDeviceIndex, userSettings.CurrentPrefab);
 
             if (renderers.Length <= 0)
             {
@@ -92,7 +94,7 @@ namespace bHapticsOSC.VRChat
 
             foreach (Renderer renderer in renderers)
             {
-                //bShader.SetTouchViewColors(renderer, defaultCol, triggeredCol);
+                //bShader.SetTouchViewColors(renderer, userSettings.TouchView_Default, userSettings.TouchView_Triggered);
 
                 AacFlClip falseClip = aac.NewClip().Animating(clip => clip.Animates(renderer, $"material._Node{shaderNode}").WithOneFrame(0f));
                 falseState = falseState.WithAnimation(falseClip);
@@ -102,9 +104,11 @@ namespace bHapticsOSC.VRChat
             }
         }
 
-        private static string ConvertParameterAsBhaptics(string parameter)
+        // The mobile prefabs address the app on v2m, so a Quest device has to be declared under
+        // that prefix too - naming it v2 left the animator holding parameters nothing writes.
+        private static string ConvertParameterAsBhaptics(string parameter, bool isMobile)
         {
-            parameter = parameter.Replace(bHapticsOSCIntegration.SystemName, "bOSC/v2");
+            parameter = parameter.Replace(bHapticsOSCIntegration.SystemName, isMobile ? "bOSC/v2m" : "bOSC/v2");
             if (parameter.Contains("ArmLeft"))
             {
                 parameter = parameter.Replace("ArmLeft", "ForearmL");
@@ -128,6 +132,14 @@ namespace bHapticsOSC.VRChat
             else if (parameter.Contains("HandRight"))
             {
                 parameter = parameter.Replace("HandRight", "HandR");
+            }
+            else if (parameter.Contains("GloveLeft"))
+            {
+                parameter = parameter.Replace("GloveLeft", "GloveL");
+            }
+            else if (parameter.Contains("GloveRight"))
+            {
+                parameter = parameter.Replace("GloveRight", "GloveR");
             }
 
             return parameter;

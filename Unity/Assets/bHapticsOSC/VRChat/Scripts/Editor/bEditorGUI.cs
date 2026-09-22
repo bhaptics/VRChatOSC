@@ -35,30 +35,41 @@ namespace bHapticsOSC.VRChat
 			if (editorComp.AllUserSettings == null)
             {
 				editorComp.AllUserSettings = new Dictionary<bDeviceTemplate, bUserSettings>();
-				for (int i = 0; i < bDevice.AllTemplates.Values.Count; i++)
+				foreach (KeyValuePair<bDeviceType, bDeviceTemplate> pair in bDevice.AllTemplates)
 				{
-					bDeviceTemplate template = bDevice.AllTemplates.Values.ElementAt(i);
+					bDeviceType deviceType = pair.Key;
+					bDeviceTemplate template = pair.Value;
 					if (!template.HasBone)
 						continue;
 
 					bUserSettings newSettings = CreateInstance<bUserSettings>();
 					newSettings.Bone = template.Bone;
 
+					// Not every device ships all four variants - the mobile glove is mesh-less only.
+					// Fall back to the platform's other one rather than handing SwapPrefabs a null.
 					var getNewPrefab = new Func<bUserSettings, GameObject>(x =>
 					{
-						if (x.ShowMesh)
+						GameObject meshVariant = x.IsMobile ? template.PrefabMeshMobile : template.PrefabMesh;
+						GameObject plainVariant = x.IsMobile ? template.PrefabMobile : template.Prefab;
+
+						if (x.ShowMesh && meshVariant)
 						{
-							return x.IsMobile ? template.PrefabMeshMobile : template.PrefabMesh;
+							return meshVariant;
 						}
-						else
-						{
-							return x.IsMobile ? template.PrefabMobile : template.Prefab;
-						}
+
+						return plainVariant ? plainVariant : meshVariant;
 					});
 					
 					
-					newSettings.OnShowMeshChange = thisSettings => thisSettings.SwapPrefabs(editorComp.avatarAnimator, getNewPrefab(thisSettings));
-					newSettings.OnIsMobileChange = thisSettings => thisSettings.SwapPrefabs(editorComp.avatarAnimator, getNewPrefab(thisSettings));
+					// A fresh prefab arrives unwired and nothing downstream redoes it, so lay it out
+					// here. Only the device that was swapped - the other glove keeps its positions.
+					var swapAndWire = new Action<bUserSettings>(thisSettings =>
+					{
+						thisSettings.SwapPrefabs(editorComp.avatarAnimator, getNewPrefab(thisSettings));
+						bGloveLayout.Apply(editorComp, deviceType);
+					});
+
+					newSettings.OnShowMeshChange = swapAndWire;
 					editorComp.AllUserSettings[template] = newSettings;
 				}
 			}
@@ -104,6 +115,14 @@ namespace bHapticsOSC.VRChat
 				bGUI.DrawTemplateButton(editorComp, bDeviceType.HAND_LEFT);
 
 				// Gloves
+				// Same shape as the Hands block, rewound by its own net advance so the Feet spacing
+				// below keeps working. DrawTemplateButton advances by sprite height + 6px of margin.
+				float gloveHeight = bGUI.Elements[bDeviceType.GLOVE_RIGHT].NotSelected.rect.height;
+				EditorGUILayout.Space(-24);
+				bGUI.DrawTemplateButton(editorComp, bDeviceType.GLOVE_RIGHT);
+				EditorGUILayout.Space(-(gloveHeight + 6));
+				bGUI.DrawTemplateButton(editorComp, bDeviceType.GLOVE_LEFT);
+				EditorGUILayout.Space(-(gloveHeight - 18));
 
 				// Feet
 				EditorGUILayout.Space(142);
@@ -122,28 +141,44 @@ namespace bHapticsOSC.VRChat
 						GUILayout.BeginHorizontal();
 						if (bGUI.DrawButton("+ ADD DEVICE (PC)"))
 						{
-							userSettings.Reset();
-							userSettings.IsMobile = false;
+							userSettings.ResetTo(false, CurrentTemplate.DefaultShowMesh);
 						}
 
-						if (CurrentTemplate.PrefabMeshMobile)
+						// Either mobile variant is enough. The glove ships only the mesh-less one, so
+						// gating on the mesh variant would leave it with no way in.
+						if (CurrentTemplate.PrefabMeshMobile || CurrentTemplate.PrefabMobile)
 						{
 							if (bGUI.DrawButton("+ ADD DEVICE (Quest)"))
 							{
-								userSettings.Reset();
-								userSettings.IsMobile = true;
+								userSettings.ResetTo(true, CurrentTemplate.DefaultShowMesh);
 							}
 						}
 						GUILayout.EndHorizontal();
 						return;
 					}
 
-					userSettings.ShowMesh = bGUI.DrawToggle("Show Mesh", userSettings.ShowMesh, userSettings);
-					GUILayout.Space(6);
+					// Only worth showing when there is something to switch to - the toggle runs the
+					// swap, which lays the device out again and discards hand-set motor offsets.
+					bool hasBothVariants = userSettings.IsMobile
+						? (CurrentTemplate.PrefabMobile && CurrentTemplate.PrefabMeshMobile)
+						: (CurrentTemplate.Prefab && CurrentTemplate.PrefabMesh);
 
-					if (CurrentTemplate.HasParentConstraints)
+					if (hasBothVariants)
 					{
-						userSettings.ApplyParentConstraints = bGUI.DrawToggle("Apply ParentConstraints", userSettings.ApplyParentConstraints, userSettings);
+						userSettings.ShowMesh = bGUI.DrawToggle("Show Mesh", userSettings.ShowMesh, userSettings);
+						GUILayout.Space(6);
+					}
+
+					// Gloves are the only device the prefab does not ship in position, so the only one
+					// worth re-deriving on demand - after fixing a finger mapping, say.
+					if (bGloveLayout.IsGlove(editorComp.CurrentDevice))
+					{
+						if (bGUI.DrawButton("REALIGN TO HAND")
+							&& EditorUtility.DisplayDialog(bHapticsOSCIntegration.SystemName,
+								$"Place every {CurrentTemplate.Name} motor again from the avatar's hand bones.\n\nAny motor you moved by hand will go back to its calculated position. Sizes and rotations you set are kept.",
+								"Realign", "Cancel"))
+							bGloveLayout.Apply(editorComp, editorComp.CurrentDevice);
+
 						GUILayout.Space(6);
 					}
 
@@ -236,12 +271,10 @@ namespace bHapticsOSC.VRChat
 					bAnimator.CreateAllNodes(editorComp);
 					bContacts.ApplyNewTags(editorComp);
 
-					if (bConstraints.ShouldApply(editorComp, bDeviceType.HAND_LEFT, out bUserSettings leftHandSettings)
-						|| bConstraints.ShouldApply(editorComp, bDeviceType.HAND_RIGHT, out bUserSettings rightHandSettings))
-					{
-						EditorUtility.DisplayProgressBar(bHapticsOSCIntegration.SystemName, "Applying ParentConstraints...", 0.9f);
-						bConstraints.Apply(editorComp);
-					}
+					// Hands only. Gloves are laid out on add and by REALIGN TO HAND, so an APPLY
+					// cannot walk over motor positions the user set.
+					EditorUtility.DisplayProgressBar(bHapticsOSCIntegration.SystemName, "Applying ParentConstraints...", 0.9f);
+					bConstraints.Apply(editorComp);
 
 					EditorUtility.ClearProgressBar();
 					EditorUtility.DisplayDialog(bHapticsOSCIntegration.SystemName, "Integration Complete!\nThe Avatar is now setup for bHapticsOSC support.", "OK");

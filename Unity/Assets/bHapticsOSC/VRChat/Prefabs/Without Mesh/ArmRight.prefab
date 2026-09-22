@@ -24,12 +24,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4419787002352998546}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.0274, y: 0.014, z: 0.0053}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4419787002403334941}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4419787002352998544
 MonoBehaviour:
@@ -47,8 +48,11 @@ MonoBehaviour:
   shapeType: 0
   radius: 0.025
   height: 2
+  size: {x: 1, y: 1, z: 1}
   position: {x: 0, y: 0, z: 0}
   rotation: {x: 0, y: 0, z: 0, w: 1}
+  localOnly: 0
+  contentTypes: -1
   collisionTags:
   - Head
   - Torso
@@ -57,9 +61,9 @@ MonoBehaviour:
   - FingerL
   allowSelf: 1
   allowOthers: 0
-  localOnly: 0
+  useFaceProximity: 0
   receiverType: 2
-  parameter: bOSC_v1_ForearmR_5
+  parameter: bOSC/v2/ForearmR/5/self
   minVelocity: 0.05
 --- !u!1 &4419787002403334940
 GameObject:
@@ -84,15 +88,16 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4419787002403334940}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.0325, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4419787003409301841}
   - {fileID: 4419787002639749388}
   - {fileID: 4419787002352998547}
   m_Father: {fileID: 6927388290412748430}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4419787002410843867
 GameObject:
@@ -117,15 +122,16 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4419787002410843867}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4419787003313152808}
   - {fileID: 4419787003816591932}
   - {fileID: 4419787002508081391}
   m_Father: {fileID: 6927388290412748430}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4419787002508081390
 GameObject:
@@ -151,12 +157,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4419787002508081390}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.0274, y: 0.014, z: 0.0053}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4419787002410843864}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4419787002508081388
 MonoBehaviour:
@@ -174,8 +181,11 @@ MonoBehaviour:
   shapeType: 0
   radius: 0.025
   height: 2
+  size: {x: 1, y: 1, z: 1}
   position: {x: 0, y: 0, z: 0}
   rotation: {x: 0, y: 0, z: 0, w: 1}
+  localOnly: 0
+  contentTypes: -1
   collisionTags:
   - Head
   - Torso
@@ -184,9 +194,9 @@ MonoBehaviour:
   - FingerL
   allowSelf: 1
   allowOthers: 0
-  localOnly: 0
+  useFaceProximity: 0
   receiverType: 2
-  parameter: bOSC_v1_ForearmR_2
+  parameter: bOSC/v2/ForearmR/2/self
   minVelocity: 0.05
 --- !u!1 &4419787002639749391
 GameObject:
@@ -212,12 +222,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4419787002639749391}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.014, z: 0.0274}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4419787002403334941}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4419787002639749389
 MonoBehaviour:
@@ -235,8 +246,11 @@ MonoBehaviour:
   shapeType: 0
   radius: 0.025
   height: 2
+  size: {x: 1, y: 1, z: 1}
   position: {x: 0, y: 0, z: 0}
   rotation: {x: 0, y: 0, z: 0, w: 1}
+  localOnly: 0
+  contentTypes: -1
   collisionTags:
   - Head
   - Torso
@@ -245,9 +259,9 @@ MonoBehaviour:
   - FingerL
   allowSelf: 1
   allowOthers: 0
-  localOnly: 0
+  useFaceProximity: 0
   receiverType: 2
-  parameter: bOSC_v1_ForearmR_4
+  parameter: bOSC/v2/ForearmR/4/self
   minVelocity: 0.05
 --- !u!1 &4419787003313152811
 GameObject:
@@ -273,12 +287,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4419787003313152811}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.0274, y: 0.014, z: 0.0053}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4419787002410843864}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4419787003313152809
 MonoBehaviour:
@@ -296,8 +311,11 @@ MonoBehaviour:
   shapeType: 0
   radius: 0.025
   height: 2
+  size: {x: 1, y: 1, z: 1}
   position: {x: 0, y: 0, z: 0}
   rotation: {x: 0, y: 0, z: 0, w: 1}
+  localOnly: 0
+  contentTypes: -1
   collisionTags:
   - Head
   - Torso
@@ -306,9 +324,9 @@ MonoBehaviour:
   - FingerL
   allowSelf: 1
   allowOthers: 0
-  localOnly: 0
+  useFaceProximity: 0
   receiverType: 2
-  parameter: bOSC_v1_ForearmR_0
+  parameter: bOSC/v2/ForearmR/0/self
   minVelocity: 0.05
 --- !u!1 &4419787003409301840
 GameObject:
@@ -334,12 +352,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4419787003409301840}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.0274, y: 0.014, z: 0.0053}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4419787002403334941}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4419787003409301846
 MonoBehaviour:
@@ -357,8 +376,11 @@ MonoBehaviour:
   shapeType: 0
   radius: 0.025
   height: 2
+  size: {x: 1, y: 1, z: 1}
   position: {x: 0, y: 0, z: 0}
   rotation: {x: 0, y: 0, z: 0, w: 1}
+  localOnly: 0
+  contentTypes: -1
   collisionTags:
   - Head
   - Torso
@@ -367,9 +389,9 @@ MonoBehaviour:
   - FingerL
   allowSelf: 1
   allowOthers: 0
-  localOnly: 0
+  useFaceProximity: 0
   receiverType: 2
-  parameter: bOSC_v1_ForearmR_3
+  parameter: bOSC/v2/ForearmR/3/self
   minVelocity: 0.05
 --- !u!1 &4419787003816591935
 GameObject:
@@ -395,12 +417,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4419787003816591935}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.014, z: 0.0274}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4419787002410843864}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4419787003816591933
 MonoBehaviour:
@@ -418,8 +441,11 @@ MonoBehaviour:
   shapeType: 0
   radius: 0.025
   height: 2
+  size: {x: 1, y: 1, z: 1}
   position: {x: 0, y: 0, z: 0}
   rotation: {x: 0, y: 0, z: 0, w: 1}
+  localOnly: 0
+  contentTypes: -1
   collisionTags:
   - Head
   - Torso
@@ -428,9 +454,9 @@ MonoBehaviour:
   - FingerL
   allowSelf: 1
   allowOthers: 0
-  localOnly: 0
+  useFaceProximity: 0
   receiverType: 2
-  parameter: bOSC_v1_ForearmR_1
+  parameter: bOSC/v2/ForearmR/1/self
   minVelocity: 0.05
 --- !u!1 &4451465907768006937
 GameObject:
@@ -456,12 +482,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4451465907768006937}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.014, z: 0.0274}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4451465909031726363}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4451465907768006939
 MonoBehaviour:
@@ -479,8 +506,11 @@ MonoBehaviour:
   shapeType: 0
   radius: 0.025
   height: 2
+  size: {x: 1, y: 1, z: 1}
   position: {x: 0, y: 0, z: 0}
   rotation: {x: 0, y: 0, z: 0, w: 1}
+  localOnly: 0
+  contentTypes: -1
   collisionTags:
   - Head
   - Torso
@@ -489,9 +519,9 @@ MonoBehaviour:
   - Finger
   allowSelf: 0
   allowOthers: 1
-  localOnly: 0
+  useFaceProximity: 0
   receiverType: 2
-  parameter: bOSC_v1_ForearmR_4
+  parameter: bOSC/v2/ForearmR/4/others
   minVelocity: 0.05
 --- !u!1 &4451465907853509564
 GameObject:
@@ -517,12 +547,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4451465907853509564}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.0274, y: 0.014, z: 0.0053}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4451465909031726363}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4451465907853509566
 MonoBehaviour:
@@ -540,8 +571,11 @@ MonoBehaviour:
   shapeType: 0
   radius: 0.025
   height: 2
+  size: {x: 1, y: 1, z: 1}
   position: {x: 0, y: 0, z: 0}
   rotation: {x: 0, y: 0, z: 0, w: 1}
+  localOnly: 0
+  contentTypes: -1
   collisionTags:
   - Head
   - Torso
@@ -550,9 +584,9 @@ MonoBehaviour:
   - Finger
   allowSelf: 0
   allowOthers: 1
-  localOnly: 0
+  useFaceProximity: 0
   receiverType: 2
-  parameter: bOSC_v1_ForearmR_3
+  parameter: bOSC/v2/ForearmR/3/others
   minVelocity: 0.05
 --- !u!1 &4451465907861563900
 GameObject:
@@ -578,12 +612,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4451465907861563900}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.014, z: 0.0274}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4451465908702452922}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4451465907861563902
 MonoBehaviour:
@@ -601,8 +636,11 @@ MonoBehaviour:
   shapeType: 0
   radius: 0.025
   height: 2
+  size: {x: 1, y: 1, z: 1}
   position: {x: 0, y: 0, z: 0}
   rotation: {x: 0, y: 0, z: 0, w: 1}
+  localOnly: 0
+  contentTypes: -1
   collisionTags:
   - Head
   - Torso
@@ -611,9 +649,9 @@ MonoBehaviour:
   - Finger
   allowSelf: 0
   allowOthers: 1
-  localOnly: 0
+  useFaceProximity: 0
   receiverType: 2
-  parameter: bOSC_v1_ForearmR_1
+  parameter: bOSC/v2/ForearmR/1/others
   minVelocity: 0.05
 --- !u!1 &4451465908702452921
 GameObject:
@@ -638,15 +676,16 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4451465908702452921}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4451465909688614778}
   - {fileID: 4451465907861563901}
   - {fileID: 4451465908909392999}
   m_Father: {fileID: 4451465909150658266}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4451465908909392998
 GameObject:
@@ -672,12 +711,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4451465908909392998}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.0274, y: 0.014, z: 0.0053}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4451465908702452922}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4451465908909392992
 MonoBehaviour:
@@ -695,8 +735,11 @@ MonoBehaviour:
   shapeType: 0
   radius: 0.025
   height: 2
+  size: {x: 1, y: 1, z: 1}
   position: {x: 0, y: 0, z: 0}
   rotation: {x: 0, y: 0, z: 0, w: 1}
+  localOnly: 0
+  contentTypes: -1
   collisionTags:
   - Head
   - Torso
@@ -705,9 +748,9 @@ MonoBehaviour:
   - Finger
   allowSelf: 0
   allowOthers: 1
-  localOnly: 0
+  useFaceProximity: 0
   receiverType: 2
-  parameter: bOSC_v1_ForearmR_2
+  parameter: bOSC/v2/ForearmR/2/others
   minVelocity: 0.05
 --- !u!1 &4451465909031726362
 GameObject:
@@ -732,15 +775,16 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4451465909031726362}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.0325, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4451465907853509565}
   - {fileID: 4451465907768006938}
   - {fileID: 4451465909082961802}
   m_Father: {fileID: 4451465909150658266}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4451465909082961801
 GameObject:
@@ -766,12 +810,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4451465909082961801}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.0274, y: 0.014, z: 0.0053}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4451465909031726363}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4451465909082961803
 MonoBehaviour:
@@ -789,8 +834,11 @@ MonoBehaviour:
   shapeType: 0
   radius: 0.025
   height: 2
+  size: {x: 1, y: 1, z: 1}
   position: {x: 0, y: 0, z: 0}
   rotation: {x: 0, y: 0, z: 0, w: 1}
+  localOnly: 0
+  contentTypes: -1
   collisionTags:
   - Head
   - Torso
@@ -799,9 +847,9 @@ MonoBehaviour:
   - Finger
   allowSelf: 0
   allowOthers: 1
-  localOnly: 0
+  useFaceProximity: 0
   receiverType: 2
-  parameter: bOSC_v1_ForearmR_5
+  parameter: bOSC/v2/ForearmR/5/others
   minVelocity: 0.05
 --- !u!1 &4451465909150658265
 GameObject:
@@ -826,14 +874,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4451465909150658265}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4451465908702452922}
   - {fileID: 4451465909031726363}
   m_Father: {fileID: 4451465909494301863}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4451465909494301862
 GameObject:
@@ -858,14 +907,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4451465909494301862}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4451465909150658266}
   - {fileID: 6927388290412748430}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4451465909688614777
 GameObject:
@@ -891,12 +941,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4451465909688614777}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.0274, y: 0.014, z: 0.0053}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4451465908702452922}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4451465909688614779
 MonoBehaviour:
@@ -914,8 +965,11 @@ MonoBehaviour:
   shapeType: 0
   radius: 0.025
   height: 2
+  size: {x: 1, y: 1, z: 1}
   position: {x: 0, y: 0, z: 0}
   rotation: {x: 0, y: 0, z: 0, w: 1}
+  localOnly: 0
+  contentTypes: -1
   collisionTags:
   - Head
   - Torso
@@ -924,9 +978,9 @@ MonoBehaviour:
   - Finger
   allowSelf: 0
   allowOthers: 1
-  localOnly: 0
+  useFaceProximity: 0
   receiverType: 2
-  parameter: bOSC_v1_ForearmR_0
+  parameter: bOSC/v2/ForearmR/0/others
   minVelocity: 0.05
 --- !u!1 &6927388290412748429
 GameObject:
@@ -951,12 +1005,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6927388290412748429}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4419787002410843864}
   - {fileID: 4419787002403334941}
   m_Father: {fileID: 4451465909494301863}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -7,14 +7,12 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Foot_Left
-  m_Shader: {fileID: 4800000, guid: bbb94a49f59229f45b800776a9a1d37e, type: 3}
+  m_Name: Glove_Left_3
+  m_Shader: {fileID: 4800000, guid: 7f0be9c02acaf194aa63839026dc018e, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
-  m_InvalidKeywords:
-  - PIXELSNAP_ON
-  - _ALPHAPREMULTIPLY_ON
+  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -31,7 +29,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Device: 8
+    - _Device: 10.3
     - _Node1: 0
     - _Node10: 0
     - _Node11: 0
@@ -52,8 +50,8 @@ Material:
     - _Node7: 0
     - _Node8: 0
     - _Node9: 0
-    - _SingularNode: 0
+    - _SingularNode: 1
     m_Colors:
-    - _DefaultColor: {r: 0, g: 0, b: 0, a: 0}
+    - _DefaultColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.25}
     - _TouchColor: {r: 0, g: 1, b: 1, a: 0.5}
   m_BuildTextureStacks: []

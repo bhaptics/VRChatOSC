@@ -24,12 +24,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 27490852300238618}
+  serializedVersion: 2
   m_LocalRotation: {x: 0.8313383, y: 1.0471781e-10, z: 6.7535773e-12, w: 0.55576676}
   m_LocalPosition: {x: 0, y: -0.07459958, z: 0.072500005}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4298509595987469852}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 112.47299, y: 0, z: 0}
 --- !u!114 &4565550527186207295
 MonoBehaviour:
@@ -47,8 +48,11 @@ MonoBehaviour:
   shapeType: 1
   radius: 0.041
   height: 0.103
+  size: {x: 1, y: 1, z: 1}
   position: {x: 0, y: 0, z: 0}
   rotation: {x: 0, y: 0, z: 0, w: 1}
+  localOnly: 0
+  contentTypes: -1
   collisionTags:
   - Head
   - Torso
@@ -57,9 +61,9 @@ MonoBehaviour:
   - Finger
   allowSelf: 0
   allowOthers: 1
-  localOnly: 0
+  useFaceProximity: 0
   receiverType: 2
-  parameter: bOSC_v1_FootL_1
+  parameter: bOSC/v2/FootL/1/others
   minVelocity: 0.05
 --- !u!1 &441104470515597817
 GameObject:
@@ -85,12 +89,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 441104470515597817}
+  serializedVersion: 2
   m_LocalRotation: {x: 0.8313383, y: 1.0471781e-10, z: 6.7535773e-12, w: 0.55576676}
   m_LocalPosition: {x: 0.040699996, y: -0.08659979, z: 0.067499936}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4298509595987469852}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 112.47299, y: 0, z: 0}
 --- !u!114 &3126324885529059397
 MonoBehaviour:
@@ -108,8 +113,11 @@ MonoBehaviour:
   shapeType: 1
   radius: 0.041
   height: 0.103
+  size: {x: 1, y: 1, z: 1}
   position: {x: 0, y: 0, z: 0}
   rotation: {x: 0, y: 0, z: 0, w: 1}
+  localOnly: 0
+  contentTypes: -1
   collisionTags:
   - Head
   - Torso
@@ -118,9 +126,9 @@ MonoBehaviour:
   - Finger
   allowSelf: 0
   allowOthers: 1
-  localOnly: 0
+  useFaceProximity: 0
   receiverType: 2
-  parameter: bOSC_v1_FootL_2
+  parameter: bOSC/v2/FootL/2/others
   minVelocity: 0.05
 --- !u!1 &563108712393854059
 GameObject:
@@ -146,12 +154,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 563108712393854059}
+  serializedVersion: 2
   m_LocalRotation: {x: 0.8313383, y: 1.0471781e-10, z: 6.7535773e-12, w: 0.55576676}
   m_LocalPosition: {x: 0.040699996, y: -0.08659979, z: 0.067499936}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5289106279717598891}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 112.47299, y: 0, z: 0}
 --- !u!114 &5197032926084154257
 MonoBehaviour:
@@ -169,8 +178,11 @@ MonoBehaviour:
   shapeType: 1
   radius: 0.041
   height: 0.103
+  size: {x: 1, y: 1, z: 1}
   position: {x: 0, y: 0, z: 0}
   rotation: {x: 0, y: 0, z: 0, w: 1}
+  localOnly: 0
+  contentTypes: -1
   collisionTags:
   - Head
   - Torso
@@ -178,9 +190,9 @@ MonoBehaviour:
   - Finger
   allowSelf: 1
   allowOthers: 0
-  localOnly: 0
+  useFaceProximity: 0
   receiverType: 2
-  parameter: bOSC_v1_FootL_2
+  parameter: bOSC/v2/FootL/2/self
   minVelocity: 0.05
 --- !u!1 &2260628933453416873
 GameObject:
@@ -206,12 +218,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2260628933453416873}
+  serializedVersion: 2
   m_LocalRotation: {x: 0.8313383, y: 1.0471781e-10, z: 6.7535773e-12, w: 0.55576676}
   m_LocalPosition: {x: 0, y: -0.07459958, z: 0.072500005}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5289106279717598891}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 112.47299, y: 0, z: 0}
 --- !u!114 &766844633843113753
 MonoBehaviour:
@@ -229,8 +242,11 @@ MonoBehaviour:
   shapeType: 1
   radius: 0.041
   height: 0.103
+  size: {x: 1, y: 1, z: 1}
   position: {x: 0, y: 0, z: 0}
   rotation: {x: 0, y: 0, z: 0, w: 1}
+  localOnly: 0
+  contentTypes: -1
   collisionTags:
   - Head
   - Torso
@@ -238,9 +254,9 @@ MonoBehaviour:
   - Finger
   allowSelf: 1
   allowOthers: 0
-  localOnly: 0
+  useFaceProximity: 0
   receiverType: 2
-  parameter: bOSC_v1_FootL_1
+  parameter: bOSC/v2/FootL/1/self
   minVelocity: 0.05
 --- !u!1 &4153665601531135017
 GameObject:
@@ -265,15 +281,16 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4153665601531135017}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3288420221133550808}
   - {fileID: 927190186204646059}
   - {fileID: 6130732382012416587}
   m_Father: {fileID: 5481654226918190783}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6701621275149807784
 GameObject:
@@ -298,15 +315,16 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6701621275149807784}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8492006065588948242}
   - {fileID: 8464892473448455082}
   - {fileID: 3225434914233583141}
   m_Father: {fileID: 5481654226918190783}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7784503854596668552
 GameObject:
@@ -331,14 +349,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7784503854596668552}
+  serializedVersion: 2
   m_LocalRotation: {x: -0.86602545, y: 0, z: 0, w: 0.49999994}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4298509595987469852}
   - {fileID: 5289106279717598891}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -120, y: 0, z: 0}
 --- !u!1 &8356791556168798590
 GameObject:
@@ -364,12 +383,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8356791556168798590}
+  serializedVersion: 2
   m_LocalRotation: {x: 0.8313383, y: 1.0471781e-10, z: 6.7535773e-12, w: 0.55576676}
   m_LocalPosition: {x: -0.0407, y: -0.086599715, z: 0.06750002}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5289106279717598891}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 112.47299, y: 0, z: 0}
 --- !u!114 &9092729599768859003
 MonoBehaviour:
@@ -387,8 +407,11 @@ MonoBehaviour:
   shapeType: 1
   radius: 0.041
   height: 0.103
+  size: {x: 1, y: 1, z: 1}
   position: {x: 0, y: 0, z: 0}
   rotation: {x: 0, y: 0, z: 0, w: 1}
+  localOnly: 0
+  contentTypes: -1
   collisionTags:
   - Head
   - Torso
@@ -396,9 +419,9 @@ MonoBehaviour:
   - Finger
   allowSelf: 1
   allowOthers: 0
-  localOnly: 0
+  useFaceProximity: 0
   receiverType: 2
-  parameter: bOSC_v1_FootL_0
+  parameter: bOSC/v2/FootL/0/self
   minVelocity: 0.05
 --- !u!1 &8677578413776910353
 GameObject:
@@ -424,12 +447,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8677578413776910353}
+  serializedVersion: 2
   m_LocalRotation: {x: 0.8313383, y: 1.0471781e-10, z: 6.7535773e-12, w: 0.55576676}
   m_LocalPosition: {x: -0.0407, y: -0.086599715, z: 0.06750002}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4298509595987469852}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 112.47299, y: 0, z: 0}
 --- !u!114 &7541311357167227327
 MonoBehaviour:
@@ -447,8 +471,11 @@ MonoBehaviour:
   shapeType: 1
   radius: 0.041
   height: 0.103
+  size: {x: 1, y: 1, z: 1}
   position: {x: 0, y: 0, z: 0}
   rotation: {x: 0, y: 0, z: 0, w: 1}
+  localOnly: 0
+  contentTypes: -1
   collisionTags:
   - Head
   - Torso
@@ -457,7 +484,7 @@ MonoBehaviour:
   - Finger
   allowSelf: 0
   allowOthers: 1
-  localOnly: 0
+  useFaceProximity: 0
   receiverType: 2
-  parameter: bOSC_v1_FootL_0
+  parameter: bOSC/v2/FootL/0/others
   minVelocity: 0.05

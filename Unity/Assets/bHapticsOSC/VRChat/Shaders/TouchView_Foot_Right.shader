@@ -6,7 +6,7 @@
 		_TouchColor("Touch Color", Color) = (0, 1, 1, 0.5)
 
 		[HideInInspector] _MainTex("Albedo (RGB)", 2D) = "white" {}
-		[HideInInspector] _Device("Device", Float) = 7
+		[HideInInspector] _Device("Device", Float) = 9
 		[HideInInspector] _SingularNode("Singular Node", Int) = 0
 
 		[HideInInspector] _Node1("Node 1", Int) = 0
