@@ -1,4 +1,9 @@
-﻿Shader "bHapticsOSC/TouchView_Foot_Left"
+// One shader for every glove node, unlike the Hand device which ships a separate shader per
+// node. With _SingularNode on, the shader never reads _Device - it only exists so C# can match
+// a renderer to its node - and [HideInInspector] merely hides the field, it does not stop the
+// value being serialised per material. So 16 materials over one shader do the same job as 16
+// shaders would.
+Shader "bHapticsOSC/TouchView_Glove"
 {
 	Properties
 	{
@@ -6,8 +11,8 @@
 		_TouchColor("Touch Color", Color) = (0, 1, 1, 0.5)
 
 		[HideInInspector] _MainTex("Albedo (RGB)", 2D) = "white" {}
-		[HideInInspector] _Device("Device", Float) = 8
-		[HideInInspector] _SingularNode("Singular Node", Int) = 0
+		[HideInInspector] _Device("Device", Float) = 10.1
+		[HideInInspector] _SingularNode("Singular Node", Int) = 1
 
 		[HideInInspector] _Node1("Node 1", Int) = 0
 		[HideInInspector] _Node2("Node 2", Int) = 0

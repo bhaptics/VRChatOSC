@@ -67,12 +67,6 @@ namespace bHapticsOSC.VRChat
             }
         }
 
-        private static float BaseContactRadius = 0.4f;
-        public static void ApplyContactScale(bUserSettings settings)
-        {
-            foreach (ContactReceiver contactReceiver in settings.CurrentPrefab.GetComponentsInChildren<ContactReceiver>(true))
-                contactReceiver.radius = BaseContactRadius * settings.CurrentPrefab.transform.localScale.x;
-        }
     }
 }
 #endif

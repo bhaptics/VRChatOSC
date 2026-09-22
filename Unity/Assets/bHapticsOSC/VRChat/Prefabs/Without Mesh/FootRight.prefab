@@ -23,15 +23,16 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1132496656189446498}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2536122222773506318}
   - {fileID: 2563359510102149046}
   - {fileID: 8802493041283619385}
   m_Father: {fileID: 2208208333310412661}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1742139309434486581
 GameObject:
@@ -57,12 +58,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1742139309434486581}
+  serializedVersion: 2
   m_LocalRotation: {x: 0.8313383, y: 1.0471781e-10, z: 6.7535773e-12, w: 0.55576676}
   m_LocalPosition: {x: 0.040699996, y: -0.08659979, z: 0.067499936}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7570763237831774166}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 112.47299, y: 0, z: 0}
 --- !u!114 &6332716326787657935
 MonoBehaviour:
@@ -80,8 +82,11 @@ MonoBehaviour:
   shapeType: 1
   radius: 0.041
   height: 0.103
+  size: {x: 1, y: 1, z: 1}
   position: {x: 0, y: 0, z: 0}
   rotation: {x: 0, y: 0, z: 0, w: 1}
+  localOnly: 0
+  contentTypes: -1
   collisionTags:
   - Head
   - Torso
@@ -90,9 +95,9 @@ MonoBehaviour:
   - Finger
   allowSelf: 0
   allowOthers: 1
-  localOnly: 0
+  useFaceProximity: 0
   receiverType: 2
-  parameter: bOSC_v1_FootR_2
+  parameter: bOSC/v2/FootR/2/others
   minVelocity: 0.05
 --- !u!1 &2671477471964761442
 GameObject:
@@ -118,12 +123,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2671477471964761442}
+  serializedVersion: 2
   m_LocalRotation: {x: 0.8313383, y: 1.0471781e-10, z: 6.7535773e-12, w: 0.55576676}
   m_LocalPosition: {x: -0.0407, y: -0.086599715, z: 0.06750002}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2004436760362655585}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 112.47299, y: 0, z: 0}
 --- !u!114 &2937589795530001767
 MonoBehaviour:
@@ -141,8 +147,11 @@ MonoBehaviour:
   shapeType: 1
   radius: 0.041
   height: 0.103
+  size: {x: 1, y: 1, z: 1}
   position: {x: 0, y: 0, z: 0}
   rotation: {x: 0, y: 0, z: 0, w: 1}
+  localOnly: 0
+  contentTypes: -1
   collisionTags:
   - Head
   - Torso
@@ -150,9 +159,9 @@ MonoBehaviour:
   - Finger
   allowSelf: 1
   allowOthers: 0
-  localOnly: 0
+  useFaceProximity: 0
   receiverType: 2
-  parameter: bOSC_v1_FootR_0
+  parameter: bOSC/v2/FootR/0/self
   minVelocity: 0.05
 --- !u!1 &3088181992592331227
 GameObject:
@@ -178,12 +187,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3088181992592331227}
+  serializedVersion: 2
   m_LocalRotation: {x: 0.8313383, y: 1.0471781e-10, z: 6.7535773e-12, w: 0.55576676}
   m_LocalPosition: {x: -0.0407, y: -0.086599715, z: 0.06750002}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7570763237831774166}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 112.47299, y: 0, z: 0}
 --- !u!114 &4188206946726066293
 MonoBehaviour:
@@ -201,8 +211,11 @@ MonoBehaviour:
   shapeType: 1
   radius: 0.041
   height: 0.103
+  size: {x: 1, y: 1, z: 1}
   position: {x: 0, y: 0, z: 0}
   rotation: {x: 0, y: 0, z: 0, w: 1}
+  localOnly: 0
+  contentTypes: -1
   collisionTags:
   - Head
   - Torso
@@ -211,9 +224,9 @@ MonoBehaviour:
   - Finger
   allowSelf: 0
   allowOthers: 1
-  localOnly: 0
+  useFaceProximity: 0
   receiverType: 2
-  parameter: bOSC_v1_FootR_0
+  parameter: bOSC/v2/FootR/0/others
   minVelocity: 0.05
 --- !u!1 &4521477396999230786
 GameObject:
@@ -238,14 +251,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4521477396999230786}
+  serializedVersion: 2
   m_LocalRotation: {x: -0.86602545, y: 0, z: 0, w: 0.49999994}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7570763237831774166}
   - {fileID: 2004436760362655585}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -120, y: 0, z: 0}
 --- !u!1 &5311126278881007029
 GameObject:
@@ -271,12 +285,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5311126278881007029}
+  serializedVersion: 2
   m_LocalRotation: {x: 0.8313383, y: 1.0471781e-10, z: 6.7535773e-12, w: 0.55576676}
   m_LocalPosition: {x: 0, y: -0.07459958, z: 0.072500005}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2004436760362655585}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 112.47299, y: 0, z: 0}
 --- !u!114 &6651770599064847109
 MonoBehaviour:
@@ -294,8 +309,11 @@ MonoBehaviour:
   shapeType: 1
   radius: 0.041
   height: 0.103
+  size: {x: 1, y: 1, z: 1}
   position: {x: 0, y: 0, z: 0}
   rotation: {x: 0, y: 0, z: 0, w: 1}
+  localOnly: 0
+  contentTypes: -1
   collisionTags:
   - Head
   - Torso
@@ -303,9 +321,9 @@ MonoBehaviour:
   - Finger
   allowSelf: 1
   allowOthers: 0
-  localOnly: 0
+  useFaceProximity: 0
   receiverType: 2
-  parameter: bOSC_v1_FootR_1
+  parameter: bOSC/v2/FootR/1/self
   minVelocity: 0.05
 --- !u!1 &5853315418377031799
 GameObject:
@@ -331,12 +349,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5853315418377031799}
+  serializedVersion: 2
   m_LocalRotation: {x: 0.8313383, y: 1.0471781e-10, z: 6.7535773e-12, w: 0.55576676}
   m_LocalPosition: {x: 0.040699996, y: -0.08659979, z: 0.067499936}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2004436760362655585}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 112.47299, y: 0, z: 0}
 --- !u!114 &2230450420042866573
 MonoBehaviour:
@@ -354,8 +373,11 @@ MonoBehaviour:
   shapeType: 1
   radius: 0.041
   height: 0.103
+  size: {x: 1, y: 1, z: 1}
   position: {x: 0, y: 0, z: 0}
   rotation: {x: 0, y: 0, z: 0, w: 1}
+  localOnly: 0
+  contentTypes: -1
   collisionTags:
   - Head
   - Torso
@@ -363,9 +385,9 @@ MonoBehaviour:
   - Finger
   allowSelf: 1
   allowOthers: 0
-  localOnly: 0
+  useFaceProximity: 0
   receiverType: 2
-  parameter: bOSC_v1_FootR_2
+  parameter: bOSC/v2/FootR/2/self
   minVelocity: 0.05
 --- !u!1 &5969016040558020304
 GameObject:
@@ -391,12 +413,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5969016040558020304}
+  serializedVersion: 2
   m_LocalRotation: {x: 0.8313383, y: 1.0471781e-10, z: 6.7535773e-12, w: 0.55576676}
   m_LocalPosition: {x: 0, y: -0.07459958, z: 0.072500005}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7570763237831774166}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 112.47299, y: 0, z: 0}
 --- !u!114 &7920572518131592181
 MonoBehaviour:
@@ -414,8 +437,11 @@ MonoBehaviour:
   shapeType: 1
   radius: 0.041
   height: 0.103
+  size: {x: 1, y: 1, z: 1}
   position: {x: 0, y: 0, z: 0}
   rotation: {x: 0, y: 0, z: 0, w: 1}
+  localOnly: 0
+  contentTypes: -1
   collisionTags:
   - Head
   - Torso
@@ -424,9 +450,9 @@ MonoBehaviour:
   - Finger
   allowSelf: 0
   allowOthers: 1
-  localOnly: 0
+  useFaceProximity: 0
   receiverType: 2
-  parameter: bOSC_v1_FootR_1
+  parameter: bOSC/v2/FootR/1/others
   minVelocity: 0.05
 --- !u!1 &7715605582282599907
 GameObject:
@@ -451,13 +477,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7715605582282599907}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7648353091202039372}
   - {fileID: 6803131653348172641}
   - {fileID: 550321104383232897}
   m_Father: {fileID: 2208208333310412661}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

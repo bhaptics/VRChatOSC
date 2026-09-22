@@ -9,7 +9,6 @@ namespace bHapticsOSC.VRChat
     public class bUserSettings : ScriptableObject
     {
         [SerializeField] public HumanBodyBones Bone;
-        [SerializeField] public bool ApplyParentConstraints = true;
         [SerializeField] public GameObject CurrentPrefab;
         [SerializeField] public List<string> CustomContactTags = new List<string>();
 
@@ -21,7 +20,6 @@ namespace bHapticsOSC.VRChat
         [SerializeField] private bool _showMesh = true;
         [SerializeField] private bool _isMobile = false;
         public System.Action<bUserSettings> OnShowMeshChange;
-        public System.Action<bUserSettings> OnIsMobileChange;
 
         public bool ShowMesh
         {
@@ -35,20 +33,9 @@ namespace bHapticsOSC.VRChat
             }
         }
 
-        public bool IsMobile
-        {
-            get => _isMobile;
-            set
-            {
-                if (_isMobile == value)
-                {
-                    return;
-                }
-
-                _isMobile = value;
-                OnIsMobileChange?.Invoke(this);
-            }
-        }
+        // Read-only: the platform is set in ResetTo and in FindExistingPrefab, both of which swap
+        // the prefab themselves.
+        public bool IsMobile => _isMobile;
 
         public void FindExistingPrefab(bDeviceTemplate device)
         {
@@ -60,10 +47,18 @@ namespace bHapticsOSC.VRChat
                     continue;
 
                 Object objPrefab = PrefabUtility.GetCorrespondingObjectFromOriginalSource(obj);
-                if ((objPrefab != device.Prefab) && (objPrefab != device.PrefabMesh))
+                if (objPrefab == null)
                     continue;
 
-                _showMesh = (objPrefab == device.PrefabMesh);
+                // All four variants, not just the PC pair. The null check above matters: not every
+                // device ships every variant, and an empty slot matches anything with no source.
+                bool objIsMesh = (objPrefab == device.PrefabMesh) || (objPrefab == device.PrefabMeshMobile);
+                bool objIsPlain = (objPrefab == device.Prefab) || (objPrefab == device.PrefabMobile);
+                if (!objIsMesh && !objIsPlain)
+                    continue;
+
+                _showMesh = objIsMesh;
+                _isMobile = (objPrefab == device.PrefabMobile) || (objPrefab == device.PrefabMeshMobile);
                 //if (_showMesh)
                 //    bShader.GetTouchViewColors(device.ShaderIndex, obj, ref TouchView_Default, ref TouchView_Triggered);
 
@@ -92,7 +87,13 @@ namespace bHapticsOSC.VRChat
 
             spawnedPrefab.transform.localPosition = baseObj.transform.localPosition;
             spawnedPrefab.transform.localEulerAngles = baseObj.transform.localEulerAngles;
-            spawnedPrefab.transform.localScale = baseObj.transform.localScale;
+
+            // Blender-exported rigs often carry a bone scale of 100, which would blow a vest up to
+            // 86m across. Divide it back out - but only for values read off the prefab, since
+            // anything copied from the live instance has already been through it.
+            spawnedPrefab.transform.localScale = (baseObj == newPrefab)
+                ? DivideByBoneScale(baseObj.transform.localScale, parent)
+                : baseObj.transform.localScale;
 
             string[] currentTags = CustomContactTags.ToArray();
 
@@ -113,6 +114,18 @@ namespace bHapticsOSC.VRChat
             CurrentPrefab = spawnedPrefab;
         }
 
+        private static Vector3 DivideByBoneScale(Vector3 scale, Transform bone)
+        {
+            if (bone == null)
+                return scale;
+
+            Vector3 boneScale = bone.lossyScale;
+            return new Vector3(
+                Mathf.Approximately(boneScale.x, 0f) ? scale.x : scale.x / boneScale.x,
+                Mathf.Approximately(boneScale.y, 0f) ? scale.y : scale.y / boneScale.y,
+                Mathf.Approximately(boneScale.z, 0f) ? scale.z : scale.z / boneScale.z);
+        }
+
         public void SelectCurrentPrefab()
             => Selection.activeGameObject = CurrentPrefab;
 
@@ -127,16 +140,23 @@ namespace bHapticsOSC.VRChat
             TouchView_Triggered = touchView_Triggered;
         }
 
-        public void Reset()
+        // Setting ShowMesh is what spawns the device, and the spawn reads both flags - so settle
+        // them first, or it gets built on the old values and immediately rebuilt.
+        public void ResetTo(bool isMobile, bool showMesh)
         {
+            _isMobile = isMobile;
+
             DestroyCurrentPrefab();
-            _showMesh = false;
-            ShowMesh = true;
-            ApplyParentConstraints = true;
+            _showMesh = !showMesh;
+            ShowMesh = showMesh;
             CustomContactTags.Clear();
             TouchView_Default = touchView_Default;
             TouchView_Triggered = touchView_Triggered;
         }
+
+        // The RESET button. Rebuilds the device in place, keeping the platform and variant it is on.
+        public void Reset()
+            => ResetTo(_isMobile, _showMesh);
     }
 }
 #endif

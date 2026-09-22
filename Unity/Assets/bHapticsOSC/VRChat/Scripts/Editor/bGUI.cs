@@ -88,6 +88,21 @@ namespace bHapticsOSC.VRChat
             };
 
             // Gloves
+            Elements[bDeviceType.GLOVE_LEFT] = new bGUITemplateElements
+            {
+                NotSelected = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/bHapticsOSC/VRChat/Textures/UI/tactglove_left.png", typeof(Sprite)),
+                Selected = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/bHapticsOSC/VRChat/Textures/UI/tactglove_left_selected.png", typeof(Sprite)),
+                Prefab = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/bHapticsOSC/VRChat/Textures/UI/tactglove_left_prefab.png", typeof(Sprite)),
+                Style = new GUIStyle(RigStyle) { contentOffset = new Vector2(82, 34) }
+            };
+
+            Elements[bDeviceType.GLOVE_RIGHT] = new bGUITemplateElements
+            {
+                NotSelected = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/bHapticsOSC/VRChat/Textures/UI/tactglove_right.png", typeof(Sprite)),
+                Selected = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/bHapticsOSC/VRChat/Textures/UI/tactglove_right_selected.png", typeof(Sprite)),
+                Prefab = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/bHapticsOSC/VRChat/Textures/UI/tactglove_right_prefab.png", typeof(Sprite)),
+                Style = new GUIStyle(RigStyle) { contentOffset = new Vector2(-77, 34) }
+            };
 
             Elements[bDeviceType.FOOT_LEFT] = new bGUITemplateElements
             {

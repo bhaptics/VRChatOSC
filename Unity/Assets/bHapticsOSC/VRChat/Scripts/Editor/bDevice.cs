@@ -23,14 +23,16 @@ namespace bHapticsOSC.VRChat
             AllTemplates[bDeviceType.ARM_LEFT] = new bDeviceTemplate { Name = "Arm Left", HasBone = true, Bone = HumanBodyBones.LeftLowerArm, NodeCount = 6, ShaderIndex = 2f };
             AllTemplates[bDeviceType.ARM_RIGHT] = new bDeviceTemplate { Name = "Arm Right", HasBone = true, Bone = HumanBodyBones.RightLowerArm, NodeCount = 6, ShaderIndex = 3f };
 
-            AllTemplates[bDeviceType.HAND_LEFT] = new bDeviceTemplate { Name = "Hand Left", HasBone = true, Bone = HumanBodyBones.LeftHand, NodeCount = 3, ShaderIndex = 4f, HasParentConstraints = true };
-            AllTemplates[bDeviceType.HAND_RIGHT] = new bDeviceTemplate { Name = "Hand Right", HasBone = true, Bone = HumanBodyBones.RightHand, NodeCount = 3, ShaderIndex = 5f, HasParentConstraints = true };
+            AllTemplates[bDeviceType.HAND_LEFT] = new bDeviceTemplate { Name = "Hand Left", HasBone = true, Bone = HumanBodyBones.LeftHand, NodeCount = 3, ShaderIndex = 4f };
+            AllTemplates[bDeviceType.HAND_RIGHT] = new bDeviceTemplate { Name = "Hand Right", HasBone = true, Bone = HumanBodyBones.RightHand, NodeCount = 3, ShaderIndex = 5f };
 
-            // Gloves
-
-            // TODO - ShaderIndex will be fixed to 6f, 7f after the visualizer's UV fixed. Before that, just keep it as is.
             AllTemplates[bDeviceType.FOOT_LEFT] = new bDeviceTemplate { Name = "Foot Left", HasBone = true, Bone = HumanBodyBones.LeftFoot, NodeCount = 3, ShaderIndex = 8f };
             AllTemplates[bDeviceType.FOOT_RIGHT] = new bDeviceTemplate { Name = "Foot Right", HasBone = true, Bone = HumanBodyBones.RightFoot, NodeCount = 3, ShaderIndex = 9f };
+
+            // DefaultShowMesh off until the glove gets a body: its mesh variant is eight indicator
+            // spheres with nothing to sit on. Put it back to true once there is a model.
+            AllTemplates[bDeviceType.GLOVE_LEFT] = new bDeviceTemplate { Name = "Glove Left", HasBone = true, Bone = HumanBodyBones.LeftHand, NodeCount = 8, ShaderIndex = 10f, DefaultShowMesh = false };
+            AllTemplates[bDeviceType.GLOVE_RIGHT] = new bDeviceTemplate { Name = "Glove Right", HasBone = true, Bone = HumanBodyBones.RightHand, NodeCount = 8, ShaderIndex = 11f, DefaultShowMesh = false };
 
             foreach (bDeviceTemplate settings in AllTemplates.Values)
             {
@@ -71,6 +73,10 @@ namespace bHapticsOSC.VRChat
                 case bDeviceType.HAND_RIGHT:
                     return index + ((node + 1) * 0.1f);
                 case bDeviceType.HAND_LEFT:
+                    return index + ((node + 1) * 0.1f);
+                case bDeviceType.GLOVE_LEFT:
+                    return index + ((node + 1) * 0.1f);
+                case bDeviceType.GLOVE_RIGHT:
                     return index + ((node + 1) * 0.1f);
                 default:
                     return index;

@@ -15,8 +15,8 @@ namespace bHapticsOSC.VRChat
         HAND_LEFT,
         HAND_RIGHT,
 
-        //GLOVE_LEFT,
-        //GLOVE_RIGHT,
+        GLOVE_LEFT,
+        GLOVE_RIGHT,
 
         FOOT_LEFT,
         FOOT_RIGHT,

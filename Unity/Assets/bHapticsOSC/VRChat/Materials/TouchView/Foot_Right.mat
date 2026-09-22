@@ -2,20 +2,26 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &2100000
 Material:
-  serializedVersion: 6
+  serializedVersion: 8
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Foot_Right
   m_Shader: {fileID: 4800000, guid: 70313253ce1e5cd40b488a58d69397a7, type: 3}
-  m_ShaderKeywords: PIXELSNAP_ON _ALPHAPREMULTIPLY_ON
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - PIXELSNAP_ON
+  - _ALPHAPREMULTIPLY_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -23,8 +29,9 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    m_Ints: []
     m_Floats:
-    - _Device: 7
+    - _Device: 9
     - _Node1: 0
     - _Node10: 0
     - _Node11: 0
@@ -49,3 +56,4 @@ Material:
     m_Colors:
     - _DefaultColor: {r: 0, g: 0, b: 0, a: 0}
     - _TouchColor: {r: 0, g: 1, b: 1, a: 0.5}
+  m_BuildTextureStacks: []

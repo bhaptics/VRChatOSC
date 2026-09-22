@@ -10,8 +10,10 @@ namespace bHapticsOSC.VRChat
 		public static Renderer[] FindRenderersFromIndex(float index, GameObject obj)
 		{
 			Renderer[] renderers = obj.GetComponentsInChildren<Renderer>(true);
+			// Empty rather than null: callers index straight into the result, and the Without Mesh
+			// variants legitimately have no renderers.
 			if ((renderers == null) || (renderers.Length <= 0))
-				return null;
+				return System.Array.Empty<Renderer>();
 
 			List<Renderer> output = new List<Renderer>();
 			foreach (Renderer renderer in renderers)
@@ -27,7 +29,9 @@ namespace bHapticsOSC.VRChat
 				{
 					if ((material == null) || !material.HasProperty("_Device"))
 						continue;
-					if (material.GetFloat("_Device") == index)
+					// Approximate, not exact: the index is float arithmetic (4f + node * 0.1f)
+					// compared against a value out of a material, and those need not match bit for bit.
+					if (Mathf.Approximately(material.GetFloat("_Device"), index))
 					{
 						output.Add(renderer);
 						break;
